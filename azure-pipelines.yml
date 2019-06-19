@@ -19,12 +19,13 @@ strategy:
 steps:
 - bash:
   echo "Hello world from $AGENT_NAME running on $AGENT_OS"
-    case $BUILD_REASON in
-            "Manual") echo "$BUILD_REQUESTEDFOR manually queued the build." ;;
-            "IndividualCI") echo "This is a CI build for $BUILD_REQUESTEDFOR." ;;
-            "BatchedCI") echo "This is a batched CI build for $BUILD_REQUESTEDFOR." ;;
-        *) $BUILD_REASON ;;
+  case $BUILD_REASON in
+     "Manual") echo "$BUILD_REQUESTEDFOR manually queued the build." ;;
+     "IndividualCI") echo "This is a CI build for $BUILD_REQUESTEDFOR." ;;
+     "BatchedCI") echo "This is a batched CI build for $BUILD_REQUESTEDFOR." ;;
+     *) $BUILD_REASON ;;
     esac
+  displayName: Hello world  
 - task: NodeTool@0
   inputs:
     versionSpec: $(node_version)
